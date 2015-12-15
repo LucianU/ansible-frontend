@@ -1,0 +1,15 @@
+---
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items: frontend_packages
+  sudo: yes
+
+- name: install sass
+  gem:
+    name: sass
+    user_install: no
+    state: present
+  sudo: yes

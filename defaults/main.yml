@@ -1,0 +1,5 @@
+---
+frontend_packages:
+  - nodejs
+  - nodejs-legacy
+  - npm
