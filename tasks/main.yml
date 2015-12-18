@@ -1,8 +1,21 @@
 ---
+- name: add repo key
+  apt_key:
+    url: "{{ frontend_repo_key_url }}"
+    state: present
+  sudo: yes
+
+- name: add deb repo
+  apt_repository:
+    repo: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items: frontend_repos
+  sudo: yes
+
 - name: install packages
   apt:
     name: "{{ item }}"
-    update_cache: yes
     state: present
   with_items: frontend_packages
   sudo: yes
